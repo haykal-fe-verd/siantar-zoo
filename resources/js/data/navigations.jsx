@@ -26,27 +26,27 @@ export const NavigationAuth = [
     },
     {
         label: "Obat",
-        href: "",
+        href: route("obat.index"),
         icon: Syringe,
     },
     {
         label: "Jenis Satwa",
-        href: "",
+        href: route("jenis-satwa.index"),
         icon: Cat,
     },
     {
         label: "Kategori Satwa",
-        href: "",
+        href: route("kategori-satwa.index"),
         icon: Dog,
     },
     {
         label: "Satwa",
-        href: "",
+        href: route("satwa.index"),
         icon: PawPrint,
     },
     {
         label: "Rekam Medis",
-        href: "",
+        href: route("rekam-medis.index"),
         icon: HeartPulse,
     },
 ];
