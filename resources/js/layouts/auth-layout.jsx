@@ -54,17 +54,19 @@ function AuthLayout({ children }) {
     }, [sessions]);
 
     return (
-        <main className="relative h-full">
+        <div className="relative">
             <div className="hidden h-full lg:flex lg:w-72 lg:flex-col lg:fixed lg:inset-y-0 z-[50]">
                 <Sidebar />
             </div>
             <div className="lg:pl-72">
                 <Topbar />
                 <div className="m-5">{children}</div>
-                <BottomBar />
+                <div className="mt-32 lg:mt-0">
+                    <BottomBar />
+                </div>
             </div>
             <Toaster />
-        </main>
+        </div>
     );
 }
 

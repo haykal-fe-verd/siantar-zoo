@@ -8,7 +8,7 @@ function BottomBar() {
     const { ziggy } = usePage().props;
 
     return (
-        <aside className="fixed bottom-0 w-full p-5 bg-white shadow-lg rounded-t-3xl lg:hidden">
+        <nav className="fixed bottom-0 left-0 z-50 block w-full p-5 mt-auto bg-white shadow-lg rounded-t-3xl lg:hidden">
             <div className="flex items-center justify-between">
                 {NavigationAuth.map((item, index) => (
                     <Link
@@ -25,7 +25,7 @@ function BottomBar() {
                     </Link>
                 ))}
             </div>
-        </aside>
+        </nav>
     );
 }
 
