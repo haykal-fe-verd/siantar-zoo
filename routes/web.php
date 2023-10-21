@@ -6,6 +6,7 @@ use App\Http\Controllers\JenisSatwaController;
 use App\Http\Controllers\KategoriSatwaController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\SatwaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/satwa', [SatwaController::class, 'store'])->name('satwa.store');
     Route::post('/satwa/{id}', [SatwaController::class, 'update'])->name('satwa.update');
     Route::delete('/satwa/{id}', [SatwaController::class, 'destroy'])->name('satwa.destroy');
+
+    //! rekam medis
+    Route::get('/rekam-medis/{id}', [RekamMedisController::class, 'show'])->name('rekam-medis.show');
+    Route::post('/rekam-medis', [RekamMedisController::class, 'store'])->name('rekam-medis.store');
+    Route::get('/satwa-medis/{id}', [RekamMedisController::class, 'detail'])->name('rekam-medis.detail');
 });
 
 require __DIR__ . '/auth.php';

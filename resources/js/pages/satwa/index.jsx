@@ -1,5 +1,5 @@
 import React from "react";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 import AuthLayout from "@/layouts/auth-layout";
 import DataTable from "@/components/data-table";
@@ -10,7 +10,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, PencilIcon, PlusCircle, Trash2 } from "lucide-react";
+import {
+    Aperture,
+    Banana,
+    MoreHorizontal,
+    PencilIcon,
+    PlusCircle,
+    Trash2,
+} from "lucide-react";
 import { Dialog } from "@/components/ui/dialog";
 import {
     AlertDialog,
@@ -176,6 +183,36 @@ function Satwa({ satwa }) {
                                                     <MoreHorizontal className="w-5 h-5" />
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent>
+                                                    <DropdownMenuItem>
+                                                        <Link
+                                                            href={route(
+                                                                "rekam-medis.detail",
+                                                                item.id
+                                                            )}
+                                                            className="flex items-center justify-start"
+                                                        >
+                                                            <Banana className="w-4 h-4 mr-3" />
+                                                            <span>
+                                                                Detail Satwa &
+                                                                Rekam Medis
+                                                            </span>
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                    <DropdownMenuItem>
+                                                        <Link
+                                                            href={route(
+                                                                "rekam-medis.show",
+                                                                item.id
+                                                            )}
+                                                            className="flex items-center justify-start"
+                                                        >
+                                                            <Aperture className="w-4 h-4 mr-3" />
+                                                            <span>
+                                                                Tambah Rekam
+                                                                Medis
+                                                            </span>
+                                                        </Link>
+                                                    </DropdownMenuItem>
                                                     <DropdownMenuItem
                                                         onClick={() =>
                                                             handleEdit(item)
@@ -184,6 +221,7 @@ function Satwa({ satwa }) {
                                                         <PencilIcon className="w-4 h-4 mr-3" />
                                                         <span>Edit</span>
                                                     </DropdownMenuItem>
+
                                                     <AlertDialog>
                                                         <AlertDialogTrigger className="flex flex-row items-center w-full px-2 py-1 text-sm rounded-md cursor-default hover:bg-accent">
                                                             <Trash2 className="w-4 h-4 mr-3" />

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tb_rekam_medis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('satwa_id');
-            $table->string('nomor_rekam_medis')->unique();
+            $table->unsignedBigInteger('obat_id');
+            $table->integer('jumlah_obat');
             $table->date('tanggal_rekam_medis');
             $table->string('kondisi_umum');
             $table->text('diagnosa');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->text('note')->nullable();
 
             $table->foreign('satwa_id')->references('id')->on('tb_satwa')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('obat_id')->references('id')->on('tb_obat')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
