@@ -2,47 +2,30 @@
 
 namespace Database\Seeders;
 
+use App\Models\Satwa;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 
 class SatwaSeeder extends Seeder
 {
     public function run(): void
     {
-        $data = [
-            [
-                'jenis_satwa_id' => 1,
-                'kategori_satwa_id' => 1,
-                'nama' => 'Singa',
-                'jenis_kelamin' => 'jantan',
-                'ras' => 'African Lion',
-                'berat' => '200',
-                'tanggal_lahir' => '2015-05-10',
-                'bangsa' => 'Felidae',
-                'habitat' => 'Savanna',
-                'makanan_favorit' => 'Daging',
+        for ($i = 1; $i <= 20; $i++) {
+            Satwa::create([
+                'jenis_satwa_id' => fake()->numberBetween(1, 3),
+                'kategori_satwa_id' => fake()->numberBetween(1, 3),
+                'nama' => 'Nama Satwa Ke-' . $i,
+                'jenis_kelamin' => fake()->randomElement(['jantan', 'betina']),
+                'ras' => 'Ras Satwa Yang Ke-' . $i,
+                'berat' => fake()->numberBetween(50, 200),
+                'tanggal_lahir' => now(),
+                'bangsa' => 'Bangsa Satwa Ke-' . $i,
+                'habitat' => fake()->randomElement(['Savanna', 'Air', 'Salju']),
+                'makanan_favorit' => fake()->randomElement(['rumput', 'daging']),
                 'ciri_khas' => 'Bulu berwarna kecoklatan, janggut lebat, dan cakar tajam.',
-                'foto' => 'singa.jpg',
-            ],
-            [
-                'jenis_satwa_id' => 2,
-                'kategori_satwa_id' => 1,
-                'nama' => 'Harimau Bengal',
-                'jenis_kelamin' => 'betina',
-                'ras' => 'Panthera tigris tigris',
-                'berat' => '150',
-                'tanggal_lahir' => '2018-03-20',
-                'bangsa' => 'Felidae',
-                'habitat' => 'Hutan Hujan',
-                'makanan_favorit' => 'Rusa, babi liar',
-                'ciri_khas' => 'Bulu belang, tubuh besar, dan gigi taring panjang.',
-                'foto' => 'harimau.jpg',
-            ],
-            // Tambahkan data dummy lainnya sesuai kebutuhan.
-        ];
-
-        DB::table('tb_satwa')->insert($data);
+                'foto' => 'foto-satwa/mC2E7nKpVqOzTYbjMGWsrqXOIdWgYRintOYMpIug.jpg',
+            ]);
+        }
     }
 }

@@ -52,6 +52,7 @@
         "lodash": "^4.17.21",
         "lottie-react": "^2.4.0",
         "lucide-react": "^0.287.0",
+        "moment": "^2.29.4",
         "react-day-picker": "^8.9.0",
         "tailwind-merge": "^1.14.0",
         "tailwindcss-animate": "^1.0.7"

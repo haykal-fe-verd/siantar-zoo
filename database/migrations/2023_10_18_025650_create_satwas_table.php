@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('habitat');
             $table->string('makanan_favorit');
             $table->text('ciri_khas');
-            $table->string('foto');
+            $table->string('foto')->nullable();
 
             $table->foreign('jenis_satwa_id')->references('id')->on('tb_jenis_satwa')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('kategori_satwa_id')->references('id')->on('tb_kategori_satwa')->onUpdate('cascade')->onDelete('cascade');

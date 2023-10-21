@@ -6,12 +6,13 @@ use App\Http\Controllers\JenisSatwaController;
 use App\Http\Controllers\KategoriSatwaController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\SatwaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/daftar-satwa', [HomeController::class, 'daftarSatwa'])->name('daftar-satwa.index');
+Route::get('/daftar-satwa/{id}', [HomeController::class, 'detailSatwa'])->name('daftar-satwa.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -29,7 +30,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //! jenis satwa
     Route::get('/jenis-satwa', [JenisSatwaController::class, 'index'])->name('jenis-satwa.index');
     Route::post('/jenis-satwa', [JenisSatwaController::class, 'store'])->name('jenis-satwa.store');
-    Route::delete('/jenis-satwa/{id}', [JenisSatwaController::class, 'destroy']);
+    Route::put('/jenis/{id}', [JenisSatwaController::class, 'update'])->name('jenis-satwa.update');
+    Route::delete('/jenis-satwa/{id}', [JenisSatwaController::class, 'destroy'])->name('jenis-satwa.destroy');
 
     //! kategori-satwa
     Route::get('/kategori-satwa', [KategoriSatwaController::class, 'index'])->name('kategori-satwa.index');
@@ -40,14 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //! satwa
     Route::get('/satwa', [SatwaController::class, 'index'])->name('satwa.index');
     Route::post('/satwa', [SatwaController::class, 'store'])->name('satwa.store');
-    Route::put('/satwa/{id}', [SatwaController::class, 'update'])->name('satwa.update');
+    Route::post('/satwa/{id}', [SatwaController::class, 'update'])->name('satwa.update');
     Route::delete('/satwa/{id}', [SatwaController::class, 'destroy'])->name('satwa.destroy');
-
-    //! rekam-medis
-    Route::get('/rekam-medis', [RekamMedisController::class, 'index'])->name('rekam-medis.index');
-    Route::post('/rekam-medis', [RekamMedisController::class, 'store'])->name('rekam-medis.store');
-    Route::put('/rekam-medis/{id}', [RekamMedisController::class, 'update'])->name('rekam-medis.update');
-    Route::delete('/rekam-medis/{id}', [RekamMedisController::class, 'destroy'])->name('rekam-medis.destroy');
 });
 
 require __DIR__ . '/auth.php';

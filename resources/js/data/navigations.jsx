@@ -14,7 +14,7 @@ export const NavigationsGuest = [
     },
     {
         label: "Daftar Satwa",
-        href: "/satwa-liar",
+        href: route("daftar-satwa.index"),
     },
 ];
 
@@ -43,10 +43,5 @@ export const NavigationAuth = [
         label: "Satwa",
         href: route("satwa.index"),
         icon: PawPrint,
-    },
-    {
-        label: "Rekam Medis",
-        href: route("rekam-medis.index"),
-        icon: HeartPulse,
     },
 ];

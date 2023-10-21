@@ -10,10 +10,22 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-import { MoreVertical, PencilIcon, Trash2 } from "lucide-react";
+import { MoreHorizontal, PencilIcon, PlusCircle, Trash2 } from "lucide-react";
 import { Dialog } from "@/components/ui/dialog";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import Form from "./form";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const header = [
     { name: "#", className: "w-10 text-center" },
@@ -89,6 +101,14 @@ function Obat({ obat }) {
 
                 <div className="p-5 space-y-4 bg-white rounded-md shadow-md ">
                     <div className="w-full">
+                        <Button
+                            className={cn("gap-2 mb-5 w-full lg:w-max")}
+                            onClick={() => setOpenModal(true)}
+                        >
+                            <PlusCircle className="w-5 h-5" />
+                            <span>Tambah Obat</span>
+                        </Button>
+
                         <DataTable
                             data={obat}
                             header={header}
@@ -104,8 +124,10 @@ function Obat({ obat }) {
                                         <TableCell>{item.stok}</TableCell>
                                         <TableCell className="text-center">
                                             <DropdownMenu>
-                                                <DropdownMenuTrigger>
-                                                    <MoreVertical className="w-5 h-5" />
+                                                <DropdownMenuTrigger
+                                                    id={`btnMore${index}`}
+                                                >
+                                                    <MoreHorizontal className="w-5 h-5" />
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent>
                                                     <DropdownMenuItem
@@ -116,14 +138,40 @@ function Obat({ obat }) {
                                                         <PencilIcon className="w-4 h-4 mr-3" />
                                                         <span>Edit</span>
                                                     </DropdownMenuItem>
-                                                    <DropdownMenuItem
-                                                        onClick={() =>
-                                                            handleDelete(item)
-                                                        }
-                                                    >
-                                                        <Trash2 className="w-4 h-4 mr-3" />
-                                                        <span>Hapus</span>
-                                                    </DropdownMenuItem>
+                                                    <AlertDialog>
+                                                        <AlertDialogTrigger className="flex flex-row items-center w-full px-2 py-1 text-sm rounded-md cursor-default hover:bg-accent">
+                                                            <Trash2 className="w-4 h-4 mr-3" />
+                                                            <span>Hapus</span>
+                                                        </AlertDialogTrigger>
+                                                        <AlertDialogContent>
+                                                            <AlertDialogHeader>
+                                                                <AlertDialogTitle>
+                                                                    Apakah anda
+                                                                    yakin?
+                                                                </AlertDialogTitle>
+                                                                <AlertDialogDescription>
+                                                                    Setelah
+                                                                    dihapus data
+                                                                    tidak dapat
+                                                                    dikembalikan!
+                                                                </AlertDialogDescription>
+                                                            </AlertDialogHeader>
+                                                            <AlertDialogFooter>
+                                                                <AlertDialogCancel>
+                                                                    Tidak
+                                                                </AlertDialogCancel>
+                                                                <AlertDialogAction
+                                                                    onClick={() =>
+                                                                        handleDelete(
+                                                                            item
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    Ya
+                                                                </AlertDialogAction>
+                                                            </AlertDialogFooter>
+                                                        </AlertDialogContent>
+                                                    </AlertDialog>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         </TableCell>

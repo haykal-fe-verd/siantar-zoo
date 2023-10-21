@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\JenisSatwa;
+use App\Models\KategoriSatwa;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -41,6 +43,8 @@ class HandleInertiaRequests extends Middleware
                 'error' => session('error'),
                 'status' => session('status'),
             ],
+            'kategoriSatwa' => KategoriSatwa::all(),
+            'jenisSatwa' => JenisSatwa::all(),
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
