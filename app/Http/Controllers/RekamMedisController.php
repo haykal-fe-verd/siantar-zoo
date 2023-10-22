@@ -20,7 +20,7 @@ class RekamMedisController extends Controller
 
     public function show($id)
     {
-        $satwa = Satwa::findOrFail($id);
+        $satwa = Satwa::with(['jenis_satwa', 'kategori_satwa'])->findOrFail($id);
         $obat = Obat::all();
 
         return Inertia::render('satwa/rekam-medis', compact('satwa', 'obat'));

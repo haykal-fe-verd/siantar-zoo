@@ -39,8 +39,10 @@ class HomeController extends Controller
         return Inertia::render('daftar-satwa/index', compact('daftarSatwa'));
     }
 
-    public function detailSatwa()
+    public function detailSatwa($id)
     {
-        //
+        $satwa = Satwa::with(['kategori_satwa', 'jenis_satwa', 'rekam_medis.obat'])->findOrFail($id);
+
+        return Inertia::render('daftar-satwa/show', compact('satwa'));
     }
 }

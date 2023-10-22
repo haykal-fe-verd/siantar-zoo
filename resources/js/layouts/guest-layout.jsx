@@ -51,7 +51,7 @@ function GuestLayout({ children }) {
     }, [sessions]);
 
     return (
-        <main>
+        <main className="bg-white">
             <div>{children}</div>
             <Toaster />
         </main>

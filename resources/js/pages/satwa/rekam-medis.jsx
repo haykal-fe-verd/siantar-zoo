@@ -18,9 +18,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Loader2 } from "lucide-react";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import moment from "moment/moment";
 
 function RekamMedis({ obat, satwa }) {
-    console.log("🚀  satwa:", satwa);
     const { data, setData, post, processing, errors, reset } = useForm({
         id: satwa.id,
         satwa_id: satwa.id,
@@ -48,10 +49,101 @@ function RekamMedis({ obat, satwa }) {
         <AuthLayout>
             <Head title="Rekam Medis" />
             <div className="p-5 space-y-4 bg-white rounded-md shadow-md ">
-                <h1 className="text-lg font-semibold ">
-                    Nama Satwa : {satwa.nama}
+                <div className="w-full lg:w-1/2">
+                    <img
+                        src={`/storage/${satwa.foto}`}
+                        alt="Foto Satwa"
+                        loading="lazy"
+                        className="object-cover w-full rounded-md h-[400px]"
+                    />
+                </div>
+                <div className="w-full">
+                    <h1 className="mb-5 text-2xl font-semibold underline decoration-wavy decoration-primary">
+                        Detail Satwa
+                    </h1>
+                    <Table>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell className="border">Nama</TableCell>
+                                <TableCell className="border">
+                                    : {satwa.nama}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">
+                                    Jenis Kelamin
+                                </TableCell>
+                                <TableCell className="border">
+                                    : {satwa.jenis_kelamin}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">Berat</TableCell>
+                                <TableCell className="border">
+                                    : {satwa.berat} Kg
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">
+                                    Tanggal Lahir
+                                </TableCell>
+                                <TableCell className="border">
+                                    :{" "}
+                                    {moment(satwa.tanggal_lahir).format(
+                                        "DD-MM-YYYY"
+                                    )}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">
+                                    Jenis Satwa
+                                </TableCell>
+                                <TableCell className="border">
+                                    : {satwa.jenis_satwa.nama_jenis_satwa}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">
+                                    Kategori Satwa
+                                </TableCell>
+                                <TableCell className="border">
+                                    : {satwa.kategori_satwa.nama_kategori_satwa}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">Ras</TableCell>
+                                <TableCell className="border">
+                                    : {satwa.ras}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">Bangsa</TableCell>
+                                <TableCell className="border">
+                                    : {satwa.bangsa}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">
+                                    Habitat
+                                </TableCell>
+                                <TableCell className="border">
+                                    : {satwa.habitat}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell className="border">
+                                    Makan Favorit
+                                </TableCell>
+                                <TableCell className="border">
+                                    : {satwa.makanan_favorit}
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </div>
+                <h1 className="my-5 text-2xl font-semibold underline decoration-wavy decoration-primary">
+                    Tambah Rekam Medis
                 </h1>
-                <Separator />
                 <form onSubmit={onSubmit} className="space-y-5 ">
                     <div className="grid grid-cols-1 gap-y-5 lg:grid-cols-2 gap-x-10">
                         {/* kondisi_umum */}
