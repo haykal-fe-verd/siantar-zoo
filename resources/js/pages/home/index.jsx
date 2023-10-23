@@ -9,9 +9,12 @@ function Home() {
         <GuestLayout>
             <Head title="Home" />
             <Navbar />
-            <section id="home" className="bg-white">
+            <section
+                id="home"
+                className="bg-white bg-[url('/mobile.png')] lg:bg-[url('/web.png')] bg-cover bg-center"
+            >
                 <div className="container mx-auto">
-                    <div className="flex flex-col items-center justify-center  h-[calc(100vh-76px)] overflow-auto">
+                    <div className="flex flex-col items-center justify-center  h-[calc(100vh-76px)] overflow-auto ">
                         <img
                             src="/logo-zoo2.png"
                             alt="Background Zoo"
